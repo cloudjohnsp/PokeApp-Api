@@ -10,6 +10,14 @@
     /* Type Checking */
     "strict": true /* Enable all strict type-checking options. */,
     "skipLibCheck": true /* Skip type checking all .d.ts files. */,
-    "outDir": "./dist"
-  }
+    "outDir": "./dist",
+    "baseUrl": "./src",
+    "paths": {
+      "@domain/*": ["domain/*"],
+      "@infra/*": ["infra/*"],
+      "@application/*": ["application/*"],
+      "@api/*": ["api/*"]
+    }
+  },
+  "include": ["src/**/*.ts"]
 }
