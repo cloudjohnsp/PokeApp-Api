@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import 'dotenv/config';
 import { ConflictError } from 'restify-errors';
-import { CreateUserRequestDto } from '@application/UseCases/create/CreateUser.dto';
+import { CreateUserRequestDto } from '@application/UseCases/User/create/CreateUser.dto';
 import { User } from '@domain/Entities/User/User';
 import { UserMappers } from '@infra/mappers/UserMappers';
 import { IUserRepository } from '@application/repositories/shared/IUserRepository.interface';

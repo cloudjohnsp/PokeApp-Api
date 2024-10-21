@@ -29,11 +29,21 @@ export class UserValidator {
     }),
   });
 
+  private static readonly GET_BY_ID_VALIDATOR = celebrate({
+    [Segments.PARAMS]: Joi.object({
+      id: Joi.string().required(),
+    }),
+  });
+
   static get createValidation() {
     return UserValidator.CREATE_VALIDATOR;
   }
 
   static get loginValidator() {
     return UserValidator.LOGIN_VALIDATOR;
+  }
+
+  static get getByIdValidator() {
+    return UserValidator.GET_BY_ID_VALIDATOR;
   }
 }

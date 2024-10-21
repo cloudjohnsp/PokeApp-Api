@@ -1,6 +1,14 @@
 import { Handler } from 'express';
-import { LoginUserController, CreateUserController } from '..';
-import { LoginUserUseCase, CreateUserUseCase } from '@application/UseCases';
+import {
+  LoginUserController,
+  CreateUserController,
+  GetUserByIdController,
+} from '..';
+import {
+  LoginUserUseCase,
+  CreateUserUseCase,
+  GetUserByIdUseCase,
+} from '@application/UseCases';
 import { IUserRepository } from '@application/repositories/shared/IUserRepository.interface';
 
 export class UserControllerFactory {
@@ -14,5 +22,10 @@ export class UserControllerFactory {
   login(): Handler {
     const loginUserUseCase = new LoginUserUseCase(this.repository);
     return new LoginUserController(loginUserUseCase).handle;
+  }
+
+  getById(): Handler {
+    const getUserByIdUseCase = new GetUserByIdUseCase(this.repository);
+    return new GetUserByIdController(getUserByIdUseCase).handle;
   }
 }

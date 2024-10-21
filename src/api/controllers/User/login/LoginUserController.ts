@@ -1,4 +1,4 @@
-import { LoginUserUseCase } from '@application/UseCases/login/LoginUserUseCase';
+import { LoginUserUseCase } from '@application/UseCases/User/login/LoginUserUseCase';
 import { Handler, NextFunction, Request, Response } from 'express';
 
 export class LoginUserController {
@@ -11,7 +11,6 @@ export class LoginUserController {
 
     try {
       const data = await this.loginUserUseCase.execute(authUser);
-
       res.status(200).json(data);
     } catch (err) {
       next(err);

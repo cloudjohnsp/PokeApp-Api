@@ -1,8 +1,9 @@
 import express, { Express, Request, Response } from 'express';
-import userRouter from './api/routes/User.route';
+import authRouter from './api/routes/Auth.route';
 import cors from 'cors';
 import 'dotenv/config';
 import { ErrorHandler } from '@api/middlewares/ErrorHandler';
+import userRouter from '@api/routes/User.route';
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
@@ -11,7 +12,8 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use('/api/v1/auth', userRouter);
+app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/user', userRouter);
 
 app.use(ErrorHandler.handler);
 
