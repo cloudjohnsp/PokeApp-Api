@@ -2,11 +2,14 @@ import { UserControllerFactory } from '@api/controllers/User/factory/UserControl
 import { UserValidator } from '@api/validators/User/user.validators';
 import { PrismaUserRepository } from '@infra/repositories/PrismaUserRepository';
 import express from 'express';
+import { authMiddleware } from '@api/middlewares/Auth';
 
 const userRouter = express.Router();
 const userControllerFactory = new UserControllerFactory(
   new PrismaUserRepository()
 );
+
+userRouter.use(authMiddleware.handler);
 
 userRouter.get(
   '/get-by-id/:id',

@@ -1,4 +1,4 @@
-import { GetUserByIdUseCase } from '@application/UseCases/User/GetById/GetUserByIdUseCase';
+import { GetUserByIdUseCase } from '@application/UseCases/User/get/GetById/GetUserByIdUseCase';
 import { Handler, NextFunction, Request, Response } from 'express';
 
 export class GetUserByIdController {
