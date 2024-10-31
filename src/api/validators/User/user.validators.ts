@@ -35,6 +35,13 @@ export class UserValidator {
     }),
   });
 
+  private static readonly UPDATE_VALIDATOR = celebrate({
+    [Segments.BODY]: Joi.object({
+      id: Joi.string().required(),
+      nickName: Joi.string().min(5).max(20).required(),
+    }),
+  });
+
   static get createValidation() {
     return UserValidator.CREATE_VALIDATOR;
   }
@@ -45,5 +52,9 @@ export class UserValidator {
 
   static get getByIdValidator() {
     return UserValidator.GET_BY_ID_VALIDATOR;
+  }
+
+  static get updateValidator() {
+    return UserValidator.UPDATE_VALIDATOR;
   }
 }

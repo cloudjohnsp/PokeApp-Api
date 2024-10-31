@@ -32,12 +32,20 @@ export class User {
     return this._nickName;
   }
 
+  public set nickName(nickName: string) {
+    this._nickName = nickName;
+  }
+
   public get email(): string {
     return this._email;
   }
 
   public get password(): string {
     return this._password;
+  }
+
+  public set password(password: string) {
+    this.password = password;
   }
 
   public get createdAt(): Date {

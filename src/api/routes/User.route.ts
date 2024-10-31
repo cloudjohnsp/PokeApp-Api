@@ -17,4 +17,10 @@ userRouter.get(
   userControllerFactory.getById()
 );
 
+userRouter.patch(
+  '/update-nickname',
+  UserValidator.updateValidator,
+  userControllerFactory.update()
+);
+
 export default userRouter;

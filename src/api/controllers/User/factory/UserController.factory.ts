@@ -3,11 +3,13 @@ import {
   LoginUserController,
   CreateUserController,
   GetUserByIdController,
+  UpdateUserController,
 } from '..';
 import {
   LoginUserUseCase,
   CreateUserUseCase,
   GetUserByIdUseCase,
+  UpdateUserUseCase,
 } from '@application/UseCases';
 import { IUserRepository } from '@application/repositories/shared/IUserRepository.interface';
 
@@ -27,5 +29,10 @@ export class UserControllerFactory {
   getById(): Handler {
     const getUserByIdUseCase = new GetUserByIdUseCase(this.repository);
     return new GetUserByIdController(getUserByIdUseCase).handle;
+  }
+
+  update(): Handler {
+    const updateUserUseCase = new UpdateUserUseCase(this.repository);
+    return new UpdateUserController(updateUserUseCase).handle;
   }
 }

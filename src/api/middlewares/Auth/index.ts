@@ -24,8 +24,8 @@ class AuthMiddleware {
 
       const issuerInfo = await this._authService.getUser(token);
 
-      req.body = { ...req.body, userId: issuerInfo.id };
-
+      req.body = { ...req.body, id: issuerInfo.id };
+      console.log(req.body);
       next();
     } catch (err) {
       next(err);
