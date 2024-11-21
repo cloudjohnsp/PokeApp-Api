@@ -5,7 +5,7 @@ import { PrismaUserRepository } from '@infra/repositories/PrismaUserRepository';
 import { IUserRepository } from '@application/repositories/shared/IUserRepository.interface';
 
 export interface IAuthService {
-  getUser(id: string): Promise<User | never>;
+  getUser(id: string | undefined): Promise<User | never>;
 }
 
 interface DecodedToken extends JwtPayload {

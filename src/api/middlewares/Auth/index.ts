@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { UnauthorizedError } from 'restify-errors';
-import jwt, { Secret, JwtPayload } from 'jsonwebtoken';
+import { JwtPayload } from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 import {
   IAuthService,
@@ -16,16 +16,15 @@ class AuthMiddleware {
 
   handler = async (req: Request, _res: Response, next: NextFunction) => {
     try {
-      const token = req.header('Authorization')?.replace('Bearer ', '');
+      const token = req.get('authorization')?.replace('Bearer ', '');
 
-      if (!token) {
+      if (!token || token === 'null') {
         throw new UnauthorizedError('Token expired or not provided!');
       }
 
       const issuerInfo = await this._authService.getUser(token);
 
       req.body = { ...req.body, id: issuerInfo.id };
-      console.log(req.body);
       next();
     } catch (err) {
       next(err);

@@ -56,6 +56,10 @@ export class User {
     return this._lastUpdatedAt;
   }
 
+  public set lastUpdatedAt(lastUpdatedAt: Date) {
+    this._lastUpdatedAt = lastUpdatedAt;
+  }
+
   public static create(nickname: string, email: string, password: string) {
     return new User(
       randomUUID(),

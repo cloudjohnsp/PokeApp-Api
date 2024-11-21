@@ -16,6 +16,8 @@ export class UpdateUserUseCase {
     }
 
     user.nickName = request.nickName;
+    user.lastUpdatedAt = new Date();
+
     await this._userRepository.update(user);
 
     return {

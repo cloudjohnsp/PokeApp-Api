@@ -49,12 +49,11 @@ export class PrismaUserRepository implements IUserRepository {
   }
 
   async update(entity: User): Promise<void> {
-    console.log;
     await this.prisma.user.update({
       where: { id: entity.id },
       data: {
         nickName: entity.nickName,
-        lastUpdatedAt: new Date(),
+        lastUpdatedAt: entity.lastUpdatedAt,
       },
     });
   }
